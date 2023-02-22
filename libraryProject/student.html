@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- css link -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/S_style.css">
+
+  <!-- box icon -->
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <title>DIEMS - Student</title>
+</head>
+
+<body>
+  <!-- film -->
+  <div class="film" id="film"></div>
+
+  <!-------------- SIDE NAVIGATION --------------->
+  <aside id="side-nav" class="side__nav grid">
+    <div class="logo__div">
+      <h1 class="logo__img">LOGO</h1>
+    </div>
+
+    <ul class="menu">
+      <li class="menu__item active"><a href="#" class="menu__link">
+          <i class='bx bxs-dashboard dash-icon'></i>
+          Dashboard</a>
+      </li>
+      <li class="menu__item"><a href="#" class="menu__link">
+          <i class='bx bxs-user dash-icon'></i>
+          Admin
+        </a></li>
+      <li class="menu__item"><a href="#" class="menu__link">
+          <i class='bx bxs-group dash-icon'></i>
+          Students
+        </a></li>
+      <li class="menu__item"><a href="#" class="menu__link">
+          <i class='bx bxs-book-alt dash-icon'></i>
+          Books</a></li>
+      <li class="menu__item"><a href="#" class="menu__link">
+          <i class='bx bxs-down-arrow-square dash-icon'></i>
+          Returns</a></li>
+      <li class="menu__item"><a href="#" class="menu__link">
+          <i class='bx bxs-up-arrow-square dash-icon'></i>
+          Issued</a></li>
+    </ul>
+  </aside>
+
+  <!------------ MAIN CONTENT ------------->
+  <main class="main">
+
+    <!-- header -->
+    <header id="header" class="header">
+      <nav id="nav-bar" class="nav__bar">
+        <div class="toggle__div" id="toggle-side-nav">
+          <i class='bx bx-list-ul dash-icon'></i>
+        </div>
+
+        <div class="login__detail-div" id="login__detail_div">
+          <i class='bx bxs-user-circle dash-icon'></i>
+          <h3 class="loggedIn__username">Hi, Admin</h3>
+          <i class='bx bxs-chevron-down dash-icon' id="dropDown_toggle_icon"></i>
+
+          <div class="login__detial-dropdown" id="login__detail-dropdown">
+            <ul class="dropdown-menu">
+              <li class="menu__item">
+                <a href="#" class="menu__link"><i class='bx bxs-user-detail dash-icon'></i>Profile</a>
+              </li>
+              <li class="menu__item">
+                <a href="#" class="menu__link"><i class='bx bxs-log-out dash-icon'></i>Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!------------------- MODALS ----------------->
+    <!-- book modal -->
+    <div class="modal" data-target="book" id="book-modal">
+
+      <h2 class="modal__heading">Add Book</h2>
+
+      <div class="modal__close-div">
+        <i class='bx bx-x'></i>
+      </div>
+
+
+      <form action="#" class="modal__form">
+
+        <div class="form-input-group">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" id="title" class="form-input" placeholder="Enter title">
+        </div>
+        <div class="form-input-group">
+          <label for="author" class="form-label">Author</label>
+          <input type="text" id="author" class="form-input" placeholder="Enter author">
+        </div>
+        <div class="form-input-group">
+          <label for="category1" class="form-label">Category</label>
+          <input type="text" id="category1" class="form-input" placeholder="Enter category">
+        </div>
+        <div class="form-input-group">
+          <label for="accessionNo" class="form-label">Accesion No</label>
+          <input type="text" id="accessionNo" class="form-input" placeholder="Enter accession no">
+        </div>
+        <div class="form-input-group">
+          <label for="totalPages" class="form-label">Total Pages</label>
+          <input type="text" id="totalPages" class="form-input" placeholder="Enter total pages">
+        </div>
+        <div class="form-input-group">
+          <button type="submit" value="sumbit" class="form-input form-btn">Sumbit</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- category modal -->
+    <div class="modal" data-target="category" id="category-modal">
+
+      <h2 class="modal__heading">Add Cateory</h2>
+
+      <div class="modal__close-div">
+        <i class='bx bx-x'></i>
+      </div>
+
+
+      <form action="#" class="modal__form">
+
+        <div class="form-input-group">
+          <label for="category" class="form-label">Category</label>
+          <input type="text" id="category" class="form-input" placeholder="Enter category">
+        </div>
+        <div class="form-input-group">
+          <label for="description" class="form-label">Description</label>
+          <input type="text" id="description" class="form-input" placeholder="Enter description">
+        </div>
+        <div class="form-input-group">
+          <button type="submit" value="sumbit" class="form-input form-btn">Sumbit</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- student modal -->
+    <div class="modal" data-target="student" id="student-modal">
+
+      <h2 class="modal__heading">Add Student</h2>
+
+      <div class="modal__close-div">
+        <i class='bx bx-x'></i>
+      </div>
+
+
+      <form action="#" class="modal__form">
+
+        <div class="form-input-group">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" id="name" class="form-input" placeholder="Enter name">
+        </div>
+        <div class="form-input-group">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" class="form-input" placeholder="Enter email">
+        </div>
+        <div class="form-input-group">
+          <label for="contact" class="form-label">Contact</label>
+          <input type="tel" inputmode="tel" id="contact" class="form-input" placeholder="Enter contact no">
+        </div>
+        <div class="form-input-group">
+          <label for="branch" class="form-label">Branch</label>
+          <input type="text" inputmode="tel" id="branch" class="form-input" placeholder="Select your branch">
+        </div>
+        <div class="form-input-group">
+          <label for="year" class="form-label">Year</label>
+          <input type="text" inputmode="tel" id="year" class="form-input" placeholder="Select year">
+        </div>
+        <div class="form-input-group">
+          <label for="prn" class="form-label">PRN</label>
+          <input type="number" inputmode="tel" id="prn" class="form-input" placeholder="Enter your PRN">
+        </div>
+        <div class="form-input-group">
+          <button type="submit" value="sumbit" class="form-input form-btn">Sumbit</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Admin modal -->
+    <div class="modal" data-target="admin" id="admin-modal">
+
+      <h2 class="modal__heading">Add Admin</h2>
+
+      <div class="modal__close-div">
+        <i class='bx bx-x'></i>
+      </div>
+
+
+      <form action="#" class="modal__form">
+
+        <div class="form-input-group">
+          <label for="aName" class="form-label">Name</label>
+          <input type="text" id="aName" class="form-input" placeholder="Enter name">
+        </div>
+        <div class="form-input-group">
+          <label for="aEmail" class="form-label">Email</label>
+          <input type="email" id="aEmail" class="form-input" placeholder="Enter email">
+        </div>
+        <div class="form-input-group">
+          <label for="aContact" class="form-label">Contact</label>
+          <input type="number" inputmode="tel" id="aContact" class="form-input" placeholder="Enter contact no">
+        </div>
+        <div class="form-input-group">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" id="password" class="form-input" placeholder="Enter password">
+        </div>
+        <div class="form-input-group">
+          <label for="cPassword" class="form-label">Confirm Password</label>
+          <input type="password" id="cPassword" class="form-input" placeholder="Re-enter your password">
+        </div>
+
+
+        <div class="form-input-group">
+          <button type="submit" value="sumbit" class="form-input form-btn">Sumbit</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- main content -->
+    <div class="content" id="content">
+      <!-- breadcrum -->
+      <div class="breadcrum">
+        <h3 class="breadcrum-title">Students</h3>
+      </div>
+
+      <!-- dash-items -->
+      <section class="grid-table">
+        <div class="student-table">
+          <div class="table-header">
+            <h2>Student Details</h2>
+            <button>see all <div class="las la-arro-right"></div></button>
+          </div>
+          <div class="table-body">
+            <div class="table">
+              <table width="100%">
+                <thead>
+                  <tr>
+                    <td>Sr.no</td>
+                    <td>Student name</td>
+                    <td>Student email</td>
+                    <td>Student roll.no</td>
+                    <td>Student prn</td>
+                    <td>Student phone</td>
+                    <td>Student branch</td>
+                    <td>Book count</td>
+                    <td>account Status</td>
+                    <td>Action</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>kishan aher</td>
+                    <td>kishanaherr12@gmail.com</td>
+                    <td>31101</td>
+                    <td>1921141370038</td>
+                    <td>9112962305</td>
+                    <td>electronics and telecommunication</td>
+                    <td>4</td>
+                    <td><span class="status"></span>pending</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>swapnil awad</td>
+                    <td>swapnilawad2231@gmail.com</td>
+                    <td>31102</td>
+                    <td>192141370023</td>
+                    <td>8975174714</td>
+                    <td>electronics and telecommunication</td>
+                    <td>7</td>
+                    <td><span class="status active"></span>active</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>yashawant mangate</td>
+                    <td>yashmangate1@gmail.com</td>
+                    <td>35130</td>
+                    <td>192141370028</td>
+                    <td>8329659032</td>
+                    <td>computer science</td>
+                    <td>5</td>
+                    <td><span class="status"></span>pending</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>vishal barbaile</td>
+                    <td>vishal2212@gmail.com</td>
+                    <td>31105</td>
+                    <td>192141370026</td>
+                    <td>8668442565</td>
+                    <td>electronics and telecommunication</td>
+                    <td>2</td>
+                    <td><span class="status danger"></span>inactive</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>vishal barbaile</td>
+                    <td>vishal2212@gmail.com</td>
+                    <td>31105</td>
+                    <td>192141370026</td>
+                    <td>8668442565</td>
+                    <td>electronics and telecommunication</td>
+                    <td>2</td>
+                    <td><span class="status danger"></span>inactive</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>vishal barbaile</td>
+                    <td>vishal2212@gmail.com</td>
+                    <td>31105</td>
+                    <td>192141370026</td>
+                    <td>8668442565</td>
+                    <td>electronics and telecommunication</td>
+                    <td>2</td>
+                    <td><span class="status danger"></span>inactive</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>vishal barbaile</td>
+                    <td>vishal2212@gmail.com</td>
+                    <td>31105</td>
+                    <td>192141370026</td>
+                    <td>8668442565</td>
+                    <td>electronics and telecommunication</td>
+                    <td>2</td>
+                    <td><span class="status danger"></span>inactive</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>vishal barbaile</td>
+                    <td>vishal2212@gmail.com</td>
+                    <td>31105</td>
+                    <td>192141370026</td>
+                    <td>8668442565</td>
+                    <td>electronics and telecommunication</td>
+                    <td>2</td>
+                    <td><span class="status danger"></span>inactive</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>vishal barbaile</td>
+                    <td>vishal2212@gmail.com</td>
+                    <td>31105</td>
+                    <td>192141370026</td>
+                    <td>8668442565</td>
+                    <td>electronics and telecommunication</td>
+                    <td>2</td>
+                    <td><span class="status danger"></span>inactive</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>vishal barbaile</td>
+                    <td>vishal2212@gmail.com</td>
+                    <td>31105</td>
+                    <td>192141370026</td>
+                    <td>8668442565</td>
+                    <td>electronics and telecommunication</td>
+                    <td>2</td>
+                    <td><span class="status danger"></span>inactive</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>vishal barbaile</td>
+                    <td>vishal2212@gmail.com</td>
+                    <td>31105</td>
+                    <td>192141370026</td>
+                    <td>8668442565</td>
+                    <td>electronics and telecommunication</td>
+                    <td>2</td>
+                    <td><span class="status danger"></span>inactive</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>vishal barbaile</td>
+                    <td>vishal2212@gmail.com</td>
+                    <td>31105</td>
+                    <td>192141370026</td>
+                    <td>8668442565</td>
+                    <td>electronics and telecommunication</td>
+                    <td>2</td>
+                    <td><span class="status danger"></span>inactive</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>vishal barbaile</td>
+                    <td>vishal2212@gmail.com</td>
+                    <td>31105</td>
+                    <td>192141370026</td>
+                    <td>8668442565</td>
+                    <td>electronics and telecommunication</td>
+                    <td>2</td>
+                    <td><span class="status danger"></span>inactive</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>vishal barbaile</td>
+                    <td>vishal2212@gmail.com</td>
+                    <td>31105</td>
+                    <td>192141370026</td>
+                    <td>8668442565</td>
+                    <td>electronics and telecommunication</td>
+                    <td>2</td>
+                    <td><span class="status danger"></span>inactive</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>vishal barbaile</td>
+                    <td>vishal2212@gmail.com</td>
+                    <td>31105</td>
+                    <td>192141370026</td>
+                    <td>8668442565</td>
+                    <td>electronics and telecommunication</td>
+                    <td>2</td>
+                    <td><span class="status danger"></span>inactive</td>
+                    <td><button class="">delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- secondary-dash-item -->
+    </div>
+  </main>
+</body>
+
+<script src="libraryProject/assets/js/main.js"></script>
+
+</html>

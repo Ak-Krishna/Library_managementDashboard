@@ -1,0 +1,124 @@
+-- -- 
+-- -- Database : `library_diems`
+-- --
+-- DROP DATABASE IF EXISTS library_diems;
+-- CREATE DATABASE library_diems;
+-- USE library_diems;
+-- -- ----------------------------------
+
+-- --
+-- -- Table: `branch`
+-- --
+-- CREATE TABLE branch(
+--     branchId INT NOT NULL AUTO_INCREMENT,
+--     branch CHAR(60) NOT NULL UNIQUE,
+--     PRIMARY KEY (branchId)
+-- );
+-- -- ----------------------------------
+
+-- --
+-- -- Table: `student`
+-- --
+-- CREATE TABLE student(
+--     srno INT NOT NULL AUTO_INCREMENT,
+--     name VARCHAR(30) NOT NULL,
+--     email VARCHAR(60) NOT NULL UNIQUE,
+--     prn INT NOT NULL UNIQUE,
+--     contact VARCHAR(10) NOT NULL,
+--     class CHAR(10) NOT NULL,
+--     year ENUM('1', '2', '3', '4') DEFAULT '1',
+--     branchId INT,
+--     registeredOn DATE DEFAULT CURRENT_TIMESTAMP,
+--     CONSTRAINT pk_student PRIMARY KEY (srno, prn),
+--     FOREIGN KEY (branchId) REFERENCES branch(branchId)
+-- );
+-- -- ----------------------------------
+
+-- --
+-- -- Table: `category`
+-- --
+-- CREATE TABLE category(
+--     srno INT NOT NULL AUTO_INCREMENT,
+--     category CHAR(50) NOT NULL UNIQUE DEFAULT "motivational",
+--     description CHAR(100) DEFAULT "motivational book",
+--     PRIMARY KEY (srno)
+-- );
+-- -- ----------------------------------
+
+-- --
+-- --  Table: `book`
+-- --
+-- CREATE TABLE book(
+--     srno INT NOT NULL AUTO_INCREMENT,
+--     accessionNo CHAR(20) NOT NULL UNIQUE,
+--     author CHAR(100) NOT NULL,
+--     availableQty TINYINT NOT NULL,
+--     title VARCHAR(100) NOT NULL,
+--     categoryId INT NOT NULL,
+--     publisher CHAR(100) DEFAULT "NULL",
+--     qty TINYINT NOT NULL,
+--     status BOOLEAN DEFAULT 0,
+--     registeredOn DATE DEFAULT CURRENT_TIMESTAMP,
+--     price INT,
+--     totalPages SMALLINT(255),
+--     CONSTRAINT pk_book PRIMARY KEY (srno, accessionNo)
+-- );
+-- -- ----------------------------------
+
+-- --
+-- -- Table `issued`
+-- --
+-- CREATE TABLE issued(
+--     srno INT NOT NULL AUTO_INCREMENT,
+--     accessionNo CHAR(20) NOT NULL,
+--     prn INT NOT NULL,
+--     date DATE DEFAULT CURRENT_TIMESTAMP,
+--     PRIMARY KEY (srno),
+--     FOREIGN KEY (accessionNo) REFERENCES book (accessionNo),
+--     FOREIGN KEY (prn) REFERENCES student (prn)
+-- );
+-- -- ----------------------------------
+
+-- --
+-- -- Table: `returned`
+-- --
+-- CREATE TABLE returned(
+--     srno INT NOT NULL AUTO_INCREMENT,
+--     accessionNo CHAR(20) NOT NULL,
+--     prn INT NOT NULL,
+--     issuedDate DATE NOT NULL,
+--     date DATE DEFAULT CURRENT_TIMESTAMP,
+--     rating TINYINT(1) NOT NULL DEFAULT 1,
+--     PRIMARY KEY (srno),
+--     FOREIGN KEY (accessionNo) REFERENCES book(accessionNo),
+--     FOREIGN KEY (prn) REFERENCES student(prn)
+-- );
+-- ----------------------------------
+
+-- --
+-- -- Table: `category`
+-- --
+-- CREATE TABLE category(
+--     srno INT NOT NULL AUTO_INCREMENT,
+--     category CHAR(50) NOT NULL UNIQUE DEFAULT "motivational",
+--     description CHAR(100) DEFAULT "motivational book",
+--     PRIMARY KEY (srno)
+-- );
+-- -- ----------------------------------
+
+--
+-- Table: `admin`
+--
+-- CREATE TABLE admin(
+--     id INT NOT NULL AUTO_INCREMENT,
+--     username CHAR(30) NOT NULL UNIQUE,
+--     email CHAR(60) NOT NULL UNIQUE,
+--     contact VARCHAR(10) NOT NULL,
+--     password VARCHAR(255) NOT NULL,
+--     token VARCHAR(30) NOT NULL UNIQUE,
+--     status BOOL NOT NULL,
+--     registeredOn DATE DEFAULT CURRENT_TIMESTAMP,
+--     lastUpdatedOn DATETIME ON UPDATE CURRENT_TIMESTAMP,
+--     PRIMARY KEY (id)
+-- );
+
